@@ -14,6 +14,7 @@ Patch1:		%{name}-debian.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
 BuildRequires:	libtool
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 This is quite a simple library that provides an easy CGI interface (Common
