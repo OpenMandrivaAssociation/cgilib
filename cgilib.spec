@@ -5,7 +5,7 @@
 Summary:	A CGI (Common Gateway Interface) library
 Name:		cgilib
 Version:	0.6
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		System/Libraries
 URL:		http://www.infodrom.org/projects/cgilib/
