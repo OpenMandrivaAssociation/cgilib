@@ -1,18 +1,17 @@
-%define	major 0
+%define	major 1
 %define libname %mklibname cgi %{major}
 %define develname %mklibname cgi -d
 
 Summary:	A CGI (Common Gateway Interface) library
 Name:		cgilib
-Version:	0.6
-Release:	%mkrel 3
+Version:	0.7
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Libraries
 URL:		http://www.infodrom.org/projects/cgilib/
 Source0:	%{name}-%{version}.tar.gz
-Patch0:		cgilib-ac_am.diff
-BuildRequires:	autoconf2.5
-BuildRequires:	automake1.7
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -45,15 +44,12 @@ Obsoletes:	%{mklibname cgi 0 -d}
 Header files and develpment documentation for %{name}.
 
 %prep
-
 %setup -q
-%patch0 -p0
 
 %build
 export CFLAGS="%{optflags} -fPIC"
 touch NEWS README AUTHORS ChangeLog
-libtoolize --copy --force; aclocal-1.7; autoconf; automake-1.7 --add-missing --copy
-
+autoreconf -if
 %configure2_5x
 
 %make CFLAGS="%{optflags} -fPIC"
@@ -62,6 +58,9 @@ libtoolize --copy --force; aclocal-1.7; autoconf; automake-1.7 --add-missing --c
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall_std
+
+# remove unwanted files
+rm -f %{buildroot}%{_bindir}/{cgitest,jumpto}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -76,8 +75,8 @@ libtoolize --copy --force; aclocal-1.7; autoconf; automake-1.7 --add-missing --c
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc CHANGES CREDITS readme
-%{_libdir}/*.so.*
+%doc AUTHORS ChangeLog README
+%{_libdir}/libcgi.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
