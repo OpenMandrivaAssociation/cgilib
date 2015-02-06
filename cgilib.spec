@@ -5,7 +5,7 @@
 Summary:	A CGI (Common Gateway Interface) library
 Name:		cgilib
 Version:	0.7
-Release:	3
+Release:	4
 License:	GPL
 Group:		System/Libraries
 URL:		http://www.infodrom.org/projects/cgilib/
