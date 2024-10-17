@@ -8,7 +8,7 @@ Version:	0.7
 Release:	4
 License:	GPL
 Group:		System/Libraries
-URL:		http://www.infodrom.org/projects/cgilib/
+URL:		https://www.infodrom.org/projects/cgilib/
 Source0:	%{name}-%{version}.tar.gz
 BuildRequires:	autoconf
 BuildRequires:	automake
