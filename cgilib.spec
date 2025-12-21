@@ -10,6 +10,8 @@ License:	GPL
 Group:		System/Libraries
 URL:		https://www.infodrom.org/projects/cgilib/
 Source0:	%{name}-%{version}.tar.gz
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
